@@ -1,0 +1,7 @@
+## File-based project format
+.idea
+*.ipr
+*.iws
+*.iml
+target/
+*.class

@@ -16,6 +16,7 @@ Java轻量级异步并行调用工具
         public Model call() throws Exception {
             return dao.find(1000, "A");
         }
+    });
     final AsyncallFuture<Model> b = asyncall.exec(new Callable<Model>() {
         @Override
         public Model call() throws Exception {

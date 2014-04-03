@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>my</groupId>
-    <artifactId>asyncallExecutor</artifactId>
+    <artifactId>asyncall</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>asyncallExecutor</name>
+    <name>asyncall Executor</name>
     <url>http://maven.apache.org</url>
 
     <properties>

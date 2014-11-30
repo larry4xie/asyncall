@@ -3,7 +3,12 @@ package my.asyncall;
 import my.asyncall.concurrent.AsyncallThreadFactory;
 import my.asyncall.concurrent.AsyncallThreadPoolExecutor;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 异步调用工具
@@ -37,8 +42,8 @@ public class AsyncallExecutor {
             }
             BlockingQueue<Runnable> queue = getBlockingQueue(config);
             RejectedExecutionHandler handler = getRejectedExecutionHandler(config);
-            executor = new AsyncallThreadPoolExecutor(config.getPoolSize(), config.getPoolSize(), 0l, TimeUnit.MILLISECONDS,
-                                                        queue, new AsyncallThreadFactory(), handler);
+            executor = new AsyncallThreadPoolExecutor(config.getCorePoolSize(), config.getMaxPoolSize(), 0l,
+                    TimeUnit.MILLISECONDS, queue, new AsyncallThreadFactory(), handler);
             isInit = true;
         }
     }

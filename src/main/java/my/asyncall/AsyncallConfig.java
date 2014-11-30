@@ -27,7 +27,9 @@ public class AsyncallConfig {
 
     volatile long timeout = DEFAULT_TIMEOUT; // ms
 
-    private volatile int poolSize = DEFAULT_POOL_SIZE;
+    private volatile int corePoolSize = DEFAULT_POOL_SIZE;
+
+    private volatile int maxPoolSize = DEFAULT_POOL_SIZE;
 
     /** 等待队列长度，避免无限制提交请求 */
     private volatile int acceptCount = DEFAULT_ACCEPT_COUNT;
@@ -46,12 +48,14 @@ public class AsyncallConfig {
 
     public AsyncallConfig(int acceptCount, int poolSize) {
         this.acceptCount = acceptCount;
-        this.poolSize = poolSize;
+        this.corePoolSize = poolSize;
+        this.maxPoolSize = poolSize;
     }
 
-    public AsyncallConfig(long timeout, int poolSize, int acceptCount) {
+    public AsyncallConfig(long timeout, int corePoolSize, int maxPoolSize, int acceptCount) {
         this.timeout = timeout;
-        this.poolSize = poolSize;
+        this.corePoolSize = corePoolSize;
+        this.maxPoolSize = maxPoolSize;
         this.acceptCount = acceptCount;
     }
 
@@ -63,12 +67,20 @@ public class AsyncallConfig {
         this.timeout = timeout;
     }
 
-    public int getPoolSize() {
-        return poolSize;
+    public int getCorePoolSize() {
+        return corePoolSize;
     }
 
-    public void setPoolSize(int poolSize) {
-        this.poolSize = poolSize;
+    public void setCorePoolSize(int corePoolSize) {
+        this.corePoolSize = corePoolSize;
+    }
+
+    public int getMaxPoolSize() {
+        return maxPoolSize;
+    }
+
+    public void setMaxPoolSize(int maxPoolSize) {
+        this.maxPoolSize = maxPoolSize;
     }
 
     public int getAcceptCount() {
